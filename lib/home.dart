@@ -1,6 +1,3 @@
-
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -11,21 +8,16 @@ import 'package:the_apple_sign_in/the_apple_sign_in.dart';
 
 import 'fetch_data.dart';
 
-
 class ShareData extends StatefulWidget {
   const ShareData({super.key});
 
   @override
-
   State<ShareData> createState() => _ShareDataState();
 }
-
 
 class _ShareDataState extends State<ShareData> {
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
-
-
 
   late DatabaseReference dbRef;
 
@@ -45,17 +37,20 @@ class _ShareDataState extends State<ShareData> {
                 width: double.infinity,
                 child: const Padding(
                   padding: EdgeInsets.only(top: 120, left: 22),
-                  child: Text("HELLO\nTHERE!", style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),),
-                )
-            ),
+                  child: Text(
+                    "HELLO\nTHERE!",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold),
+                  ),
+                )),
             Padding(
               padding: const EdgeInsets.only(top: 250),
               child: Container(
                 decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(40),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
                       topRight: Radius.circular(40)),
                   color: Colors.white,
                 ),
@@ -68,14 +63,15 @@ class _ShareDataState extends State<ShareData> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const SizedBox(height: 40,),
+                        const SizedBox(
+                          height: 40,
+                        ),
                         TextField(
                           controller: username,
                           decoration: InputDecoration(
                               suffixIcon: Icon(Icons.check),
                               hintText: "GMAIL",
-                              hintStyle: TextStyle(color: Colors.brown[900])
-                          ),
+                              hintStyle: TextStyle(color: Colors.brown[900])),
                         ),
                         const SizedBox(
                           height: 40,
@@ -85,18 +81,22 @@ class _ShareDataState extends State<ShareData> {
                           decoration: InputDecoration(
                               suffixIcon: Icon(Icons.visibility_off),
                               hintText: "PASSWORD",
-                              hintStyle: TextStyle(color: Colors.brown[900])
-                          ),
+                              hintStyle: TextStyle(color: Colors.brown[900])),
                         ),
                         const SizedBox(
                           height: 45,
                         ),
                         const Align(
                           alignment: Alignment.centerRight,
-                          child: Text("Forgot Password?", style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 17),),
+                          child: Text(
+                            "Forgot Password?",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 17),
+                          ),
                         ),
-                        const SizedBox(height: 30,),
+                        const SizedBox(
+                          height: 30,
+                        ),
                         InkWell(
                           onTap: () {
                             Logout();
@@ -116,10 +116,13 @@ class _ShareDataState extends State<ShareData> {
                               color: Colors.brown[800],
                             ),
                             child: const Center(
-                              child: Text("LOG IN", style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 23,
-                                  fontWeight: FontWeight.bold),),
+                              child: Text(
+                                "LOG IN",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 23,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
                         ),
@@ -134,16 +137,20 @@ class _ShareDataState extends State<ShareData> {
                                 color: Colors.brown[800],
                               ),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Image.asset("assets/google.png", width: 40,),
-
-                                  Text("Continue With Google", style: TextStyle(
-                                      fontSize: 20, color: Colors.white),)
+                                  Image.asset(
+                                    "assets/google.png",
+                                    width: 40,
+                                  ),
+                                  Text(
+                                    "Continue With Google",
+                                    style: TextStyle(
+                                        fontSize: 20, color: Colors.white),
+                                  )
                                 ],
-                              )
-                          ),
+                              )),
                         ),
                         const SizedBox(height: 20),
                         Align(
@@ -155,12 +162,18 @@ class _ShareDataState extends State<ShareData> {
                               Text("Don't Have account?"),
                               InkWell(
                                 onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(
-                                      builder: (context) => SignupScreen()));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              SignupScreen()));
                                 },
-                                child: Text("Sign up", style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20),),
+                                child: Text(
+                                  "Sign up",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                ),
                               )
                             ],
                           ),
@@ -172,8 +185,7 @@ class _ShareDataState extends State<ShareData> {
               ),
             ),
           ],
-        )
-    );
+        ));
   }
 
   void googleLogin() async {
@@ -187,13 +199,14 @@ class _ShareDataState extends State<ShareData> {
       final userdata = await result.authentication;
       final credential = GoogleAuthProvider.credential(
           accessToken: userdata.accessToken, idToken: userdata.idToken);
-      var finalresult = await FirebaseAuth.instance.signInWithCredential(
-          credential);
+      var finalresult =
+          await FirebaseAuth.instance.signInWithCredential(credential);
       print("result $finalresult");
       print(result.displayName);
       print(result.email);
       print(result.photoUrl);
-     Navigator.push(context as BuildContext, MaterialPageRoute(builder: (context)=>Home()));
+      Navigator.push(context as BuildContext,
+          MaterialPageRoute(builder: (context) => Home()));
     } catch (error) {
       print("error occured");
     }
@@ -206,7 +219,7 @@ class _ShareDataState extends State<ShareData> {
 
   void appleSign() async {
     AuthorizationResult authorizationResult =
-    await TheAppleSignIn.performRequests([
+        await TheAppleSignIn.performRequests([
       const AppleIdRequest(requestedScopes: [Scope.email, Scope.fullName])
     ]);
 
@@ -219,11 +232,11 @@ class _ShareDataState extends State<ShareData> {
           OAuthCredential oAuthCredential = oAuthProvider.credential(
               idToken: String.fromCharCodes(appleCredentials!.identityToken!),
               accessToken:
-              String.fromCharCodes(appleCredentials.authorizationCode!));
+                  String.fromCharCodes(appleCredentials.authorizationCode!));
           print(appleCredentials.email);
           print(appleCredentials.fullName);
           UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithCredential(oAuthCredential);
+              await FirebaseAuth.instance.signInWithCredential(oAuthCredential);
           if (userCredential.user != null) {
             // Navigator.push(
             //     context, MaterialPageRoute(builder: (builder) => Home()));
@@ -245,5 +258,3 @@ class _ShareDataState extends State<ShareData> {
     }
   }
 }
-
-
