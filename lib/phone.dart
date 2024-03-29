@@ -37,41 +37,41 @@ class _HomeState extends State<Home> {
                 context: context,
                 barrierDismissible: false,
                 builder: (context) => AlertDialog(
-                  title: Text("Enter OTP"),
-                  content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      TextField(
-                        controller: _codecontroller,
-                      )
-                    ],
-                  ),
-                  actions: [
-                    ElevatedButton(
-                        onPressed: () {
-                          FirebaseAuth auth = FirebaseAuth.instance;
-                          smscode = _codecontroller.text;
-                          PhoneAuthCredential _credential =
-                          PhoneAuthProvider.credential(
-                              verificationId: verificationId,
-                              smsCode: smscode);
-                          auth
-                              .signInWithCredential(_credential)
-                              .then((result) {
-                            if (result != null) {
-                              Navigator.pop(context);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Done()));
-                            }
-                          }).catchError((e) {
-                            print(e);
-                          });
-                        },
-                        child: Text("Done"))
-                  ],
-                ));
+                      title: Text("Enter OTP"),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          TextField(
+                            controller: _codecontroller,
+                          )
+                        ],
+                      ),
+                      actions: [
+                        ElevatedButton(
+                            onPressed: () {
+                              FirebaseAuth auth = FirebaseAuth.instance;
+                              smscode = _codecontroller.text;
+                              PhoneAuthCredential _credential =
+                                  PhoneAuthProvider.credential(
+                                      verificationId: verificationId,
+                                      smsCode: smscode);
+                              auth
+                                  .signInWithCredential(_credential)
+                                  .then((result) {
+                                if (result != null) {
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Done()));
+                                }
+                              }).catchError((e) {
+                                print(e);
+                              });
+                            },
+                            child: Text("Done"))
+                      ],
+                    ));
           },
           codeAutoRetrievalTimeout: (String verificationId) {
             verificationId = verificationId;
@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
                     ),
                     Padding(
                       padding:
-                      EdgeInsets.symmetric(vertical: 14, horizontal: 64),
+                          EdgeInsets.symmetric(vertical: 14, horizontal: 64),
                       child: Text(
                         "You'll receive a 6 digit code to verify next.",
                         style: TextStyle(
