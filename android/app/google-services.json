@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "348086841502",
+    "firebase_url": "https://fir-620fd-default-rtdb.firebaseio.com",
+    "project_id": "fir-620fd",
+    "storage_bucket": "fir-620fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348086841502:android:f0b2b1a03ebe8a0e220b8f",
+        "android_client_info": {
+          "package_name": "com.example.realtime"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhMi24iN71iw7N8wSiNGRmBVk_IDXfujs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
