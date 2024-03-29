@@ -6,7 +6,7 @@ import 'package:realtime/homepage.dart';
 import 'package:realtime/sign_up.dart';
 import 'package:the_apple_sign_in/the_apple_sign_in.dart';
 
-import 'fetch_data.dart';
+//import 'fetch_data.dart';
 
 class ShareData extends StatefulWidget {
   const ShareData({super.key});
